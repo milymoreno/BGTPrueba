@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  localstack:
+    image: localstack/localstack
+    ports:
+      - "4566:4566"  # Puerto para servicios de AWS
+      - "4571:4571"  # Puerto para servicios de salud de LocalStack
+    environment:
+      - SERVICES=dynamodb,s3  # Servicios específicos que deseas simular
+      - AWS_ACCESS_KEY_ID=prueba
+      - AWS_SECRET_ACCESS_KEY=prueba
+      - AWS_SESSION_TOKEN=token_de_prueba
+      - AWS_DEFAULT_REGION=us-west-2  # Región predeterminada
+    volumes:
+      - ./scripts:/scripts
+      - localstack_data:/var/localstack  # Volumen para persistencia de datos
+    command: bash -c "/scripts/init_dynamodb_tables.sh"  
+
+  init:
+    image: amazon/aws-cli
+    depends_on:
+      localstack:
+        condition: service_healthy  # Esperar a que LocalStack esté saludable
+    volumes:
+      - ./scripts:/scripts  # Montar el directorio con los scripts de inicialización
+    command: bash -c "sleep 10 && /scripts/init_dynamodb_tables.sh"
+
+volumes:
+  localstack_data:
+    driver: local

@@ -1,0 +1,229 @@
+
+peticion para sucribir el fondos
+
+Python
+ post /suscribir_fondos/unique_client_id
+
+{
+  "fondos_suscritos": [
+    {
+      "fondoId": "unique_fund_id_1",
+      "montoSuscrito": 500000,
+      "fechaSuscripcion": "2024-06-21T10:00:00Z"
+    },
+    {
+      "fondoId": "unique_fund_id_2",
+      "montoSuscrito": 300000,
+      "fechaSuscripcion": "2024-06-22T08:00:00Z"
+    }
+  ]
+}
+
+
+peticion para cancelar el fondos
+
+Python
+post /cancelar_suscripciones/unique_client_id
+
+
+{
+  "fondos_a_cancelar": [
+    {"fondoId": "id_del_fondo_1"},
+    {"fondoId": "id_del_fondo_2"}
+  ]
+}
+
+
+
+{
+  "Id": "unique_client_id", 
+  "Nombres": "Nombres del Cliente",
+  "Apellidos": "Apellidos del Cliente",
+  "tipoIdentificacion": "Tipo identificacion del Cliente",
+  "numeroIdentificacion": "Numero de identificacion del Cliente",
+  "Email": "cliente@example.com",
+  "Telefono": "123456789",
+  "saldoActual": 500000,
+  "fondosSuscritos": [
+    {
+      "fondoId": "unique_fund_id_1",
+      "montoSuscrito": 500000,
+      "fechaSuscripcion": "2024-06-21T10:00:00Z"
+    },
+    {
+      "fondoId": "unique_fund_id_2",
+      "montoSuscrito": 300000,
+      "fechaSuscripcion": "2024-06-22T08:00:00Z"
+    }
+  ],
+  "historialTransacciones": [
+    {
+      "transactionId": "unique_transaction_id_1",
+	  "fondoId": "unique_fund_id_1",
+      "tipo": "apertura",
+      "monto": 500000,
+      "fecha": "2024-06-21T10:00:00Z"
+    },
+    {
+      "transactionId": "unique_transaction_id_2",
+	  "fondoId": "unique_fund_id_1",
+      "tipo": "cancelacion",
+      "monto": -200000,
+      "fecha": "2024-06-23T15:00:00Z"
+    }
+  ],
+  "preferenciaNotificacion": "email o sms"
+  
+}
+
+ "#Crear Cliente http://localhost:8082/clientes post
+{
+ {
+  "Id": "unique_client_id",
+  "Nombres": "Nombres del Cliente",
+  "Apellidos": "Apellidos del Cliente",
+  "tipoIdentificacion": "Tipo identificacion del Cliente",
+  "numeroIdentificacion": "Numero de identificacion del Cliente",
+  "Email": "cliente@example.com",
+  "Telefono": "123456789",
+  "saldoActual": 500000,
+  "preferenciaNotificacion": "email",
+  "fondosSuscritos": [],
+  "historialTransacciones": []
+}
+}
+
+ "#Asociar fondos_suscritos
+{
+  "Id": "f14de5b0-f841-4bfd-8c5d-7cb37040a2a3",
+  "fondosSuscritos": { [
+    {
+      "fondoId": "unique_fund_id_1",
+      "montoSuscrito": 500000,
+      "fechaSuscripcion": "2024-06-21T10:00:00Z"
+    },
+    {
+      "fondoId": "unique_fund_id_2",
+      "montoSuscrito": 300000,
+      "fechaSuscripcion": "2024-06-22T12:00:00Z"
+    }
+  ]
+}
+
+
+"#Agregar transacciones
+{
+  "Id": "f14de5b0-f841-4bfd-8c5d-7cb37040a2a3",
+  "historialTransacciones": [
+    {
+		"transactionId":"transaction_id_1",
+		"fondoId": "unique_fund_id_1",
+        "tipo": "apertura",
+        "monto": "500000",
+        "fecha": "2024-06-21T10:00:00Z"
+    },
+    {
+		"transactionId":"transaction_id_2",
+		"fondoId": "unique_fund_id_1",
+        "tipo": "cancelacion",
+        "monto": "500000",
+        "fecha": "2024-06-21T10:00:00Z"
+    }
+  ]
+}
+
+"#Agregar transacciones
+{
+  "transactionId": "transaction_id_1",
+  "clienteId": "f14de5b0-f841-4bfd-8c5d-7cb37040a2a3",
+  "tipo": "apertura",
+  "monto": 500000,
+  "fecha": "2024-06-21T10:00:00Z"
+}
+-----------------------------
+
+ {
+                      
+			"Id": {
+                "S": "unique_client_id_generated_automatically"
+            },
+            "Nombres": {
+                "S": "Nombres del Cliente"
+            },
+			"Apellidos": {
+                "S": "Apellidos del Cliente"
+            },
+			"tipoIdentificacion": {
+                "S": "Tipo identificacion del Cliente"
+            },
+			"numeroIdentificacion": {
+                "S": "Numero de identificacion del Cliente"
+            },
+			"Email": {
+                "S": "cliente@example.com"
+            },
+			"Telefono": {
+                "S": "123456789"
+            },
+			"saldoActual": {
+                "N": "500000"
+            },
+			  "preferenciaNotificacion": {
+                "S": "email"
+            },
+            "historialTransacciones": {
+                "L": [
+                    {
+                        "M": {
+                            "fecha": {
+                                "S": "2024-06-21T10:00:00Z"
+                            },
+                            "tipo": {
+                                "S": "apertura"
+                            },
+                            "monto": {
+                                "N": "500000"
+                            },
+                            "transactionId": {
+                                "S": "transaction_id_1"
+                            },
+							 "fondoId": {
+                                "S": "unique_fund_id_1"
+                            }
+                        }
+                    }
+                ]
+            },
+			 "fondosSuscritos": {
+                "L": [
+                    {
+                        "M": {
+                            "fechaSuscripcion": {
+                                "S": "2024-06-21T10:00:00Z"
+                            },
+                            "fondoId": {
+                                "S": "unique_fund_id_1"
+                            },
+                            "montoSuscrito": {
+                                "N": "500000"
+                            }
+                        }
+                    },
+                    {
+                        "M": {
+                            "fechaSuscripcion": {
+                                "S": "2024-06-22T12:00:00Z"
+                            },
+                            "fondoId": {
+                                "S": "unique_fund_id_2"
+                            },
+                            "montoSuscrito": {
+                                "N": "300000"
+                            }
+                        }
+                    }
+                ]
+            }
+           
+        }
+    
