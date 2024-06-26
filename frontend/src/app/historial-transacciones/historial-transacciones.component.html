@@ -1,0 +1,33 @@
+<!-- historial-transacciones.component.html -->
+
+<h2>Historial de Transacciones</h2>
+
+<div *ngIf="historialTransacciones.length > 0">
+  <table>
+    <thead>
+      <tr>
+        <th>Transaction ID</th>
+        <th>Fondo ID</th>
+        <th>Cliente ID</th>
+        <th>Tipo</th>
+        <th>Monto</th>
+        <th>Fecha</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let transaccion of historialTransacciones">
+        <td>{{ transaccion.transactionId }}</td>
+        <td>{{ transaccion.fondoId }}</td>
+        <td>{{ transaccion.clienteId }}</td>
+        <td>{{ transaccion.tipo }}</td>
+        <td>{{ transaccion.monto }}</td>
+        <td>{{ transaccion.fecha }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div *ngIf="historialTransacciones.length === 0">
+  <p>No hay transacciones disponibles.</p>
+</div>
+

@@ -1,0 +1,43 @@
+
+<h2>Buscar Cliente y Asociar Fondos</h2>
+<div class="container">
+<form (ngSubmit)="buscarCliente()">
+  <label for="numeroIdentificacion">Número de Identificación:</label>
+  <input id="numeroIdentificacion" [(ngModel)]="numeroIdentificacion" name="numeroIdentificacion" required>
+  <button type="submit">Buscar</button>
+</form>
+</div>
+
+<div *ngIf="cliente" class="container">
+  <h3>Datos del Cliente</h3>
+  <ul>  
+    <li>Tipo Identificaciòn : {{ cliente.tipoIdentificacion }}</li>
+    <li>Nùmero Identificaciòn: {{ cliente.numeroIdentificacion }}</li>
+    <li>Nombres: {{ cliente.Nombres }}</li>
+    <li>Apellidos: {{ cliente.Apellidos }}</li>
+    <li>Email: {{ cliente.Email }}</li>
+    <li>Teléfono: {{ cliente.Telefono }}</li>
+    <li>Preferencia de Notificacion: {{ cliente.preferenciaNotificacion }}</li>
+   
+    <li>Saldo Actual: {{ cliente.saldoActual }}</li>
+  </ul>
+
+ <h3>Fondos Disponibles para Suscribirse</h3>
+  <form (ngSubmit)="asociarFondos()">
+    <div *ngFor="let fondo of fondosDisponibles" class="content">
+      <label>
+        <input type="checkbox" [(ngModel)]="fondo.selected" name="fondo{{ fondo.fondoId }}">
+        {{ fondo.nombreFondo }} - {{ fondo.montoSuscrito }}
+      </label>
+    </div>
+    <button type="submit">Asociar Fondos Seleccionados</button>
+  </form> 
+</div>
+
+<div *ngIf="!cliente && cliente !== undefined">
+  <p>Cliente no encontrado.</p>
+</div>
+
+
+
+

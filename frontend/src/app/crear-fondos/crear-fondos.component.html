@@ -1,0 +1,26 @@
+<!-- crear-fondo.component.html -->
+<h2>Crear Fondo</h2>
+<form (ngSubmit)="crearFondo()">
+  <div>
+    <label for="fondoId">ID del Fondo:</label>
+    <input type="text" id="fondoId" [(ngModel)]="fondo.fondoId" name="fondoId" required>
+  </div>
+  <div>
+    <label for="nombreFondo">Nombre del Fondo:</label>
+    <input type="text" id="nombreFondo" [(ngModel)]="fondo.nombreFondo" name="nombreFondo" required>
+  </div>
+  <div>
+    <label for="descripcion">Descripción:</label>
+    <textarea id="descripcion" [(ngModel)]="fondo.descripcion" name="descripcion" required></textarea>
+  </div>
+  <div>
+    <label for="montoSuscrito">Monto de Suscripciòn:</label>
+    <input type="number" id="montoSuscrito" [(ngModel)]="fondo.montoSuscrito" name="montoSuscrito" required>
+  </div>
+  <div>
+    <label for="fechaSuscripcion">Fecha de Suscripción:</label>
+    <input type="datetime-local" id="fechaSuscripcion" [(ngModel)]="fondo.fechaSuscripcion" name="fechaSuscripcion" required>
+  </div>
+  <button type="submit">Crear Fondo</button>
+</form>
+

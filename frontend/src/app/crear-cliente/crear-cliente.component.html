@@ -1,0 +1,52 @@
+<!-- crear-cliente.component.html -->
+<h2>Crear Cliente</h2>
+
+<form (ngSubmit)="crearCliente()">
+  <div>
+    <label for="nombres">Nombres:</label>
+    <input type="text" id="nombres" [(ngModel)]="cliente.Nombres" name="nombres" required>
+  </div>
+
+  <div>
+    <label for="apellidos">Apellidos:</label>
+    <input type="text" id="apellidos" [(ngModel)]="cliente.Apellidos" name="apellidos" required>
+  </div>
+
+  <div>
+    <label for="tipoIdentificacion">Tipo Identificación:</label>
+    <input type="text" id="tipoIdentificacion" [(ngModel)]="cliente.tipoIdentificacion" name="tipoIdentificacion" required>
+  </div>
+
+  <div>
+    <label for="numeroIdentificacion">Número Identificación:</label>
+    <input type="text" id="numeroIdentificacion" [(ngModel)]="cliente.numeroIdentificacion" name="numeroIdentificacion" required>
+  </div>
+
+  <div>
+    <label for="email">Email:</label>
+    <input type="email" id="email" [(ngModel)]="cliente.Email" name="email">
+  </div>
+
+  <div>
+    <label for="telefono">Teléfono:</label>
+    <input type="tel" id="telefono" [(ngModel)]="cliente.Telefono" name="telefono">
+  </div>
+
+  <div>
+    <label for="saldoActual">Saldo Actual:</label>
+    <input type="number" id="saldoActual" [(ngModel)]="cliente.saldoActual" name="saldoActual">
+  </div>
+
+  <div>
+    <label for="preferenciaNotificacion">Preferencia de Notificación:</label>
+    <select id="preferenciaNotificacion" [(ngModel)]="cliente.preferenciaNotificacion" name="preferenciaNotificacion">
+      <option value="email">Email</option>
+      <option value="telefono">Teléfono</option>
+      <!-- Agrega más opciones según sea necesario -->
+    </select>
+  </div>
+
+  <button type="submit">Crear Cliente</button>
+</form>
+
+

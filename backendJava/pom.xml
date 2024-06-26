@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<repositories>
+        <repository>
+            <id>central</id>
+            <name>Maven Central Repository</name>
+            <url>https://repo.maven.apache.org/maven2</url>
+        </repository>
+        <repository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/milestone</url>
+        </repository>
+        <repository>
+			<id>aws-sdk</id>
+			<url>https://aws.oss.sonatype.org/content/repositories/releases/</url>
+		</repository>
+    </repositories>
+
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.2.5</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.api.ejemplo</groupId>
+	<artifactId>apidocker</artifactId>
+	<version>0.0.1</version>
+	<name>apidocker</name>
+	<description>Api Docker project con Dynamoc DB</description>
+	<properties>
+		<java.version>17</java.version>
+	</properties>
+	<dependencies>
+
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-jpa -->
+		
+		<dependency>
+			<groupId>org.hibernate.orm</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>6.4.4.Final</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-jpa</artifactId>
+			<version>3.2.5</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+
+		<!-- AWS SDK for Java - DynamoDB -->
+		<dependency>
+			<groupId>com.amazonaws</groupId>
+			<artifactId>aws-java-sdk-dynamodb</artifactId>
+			<version>1.12.92</version> <!-- o la versión más reciente -->
+		</dependency>
+		<dependency>
+			<groupId>com.amazonaws</groupId>
+			<artifactId>aws-java-sdk-core</artifactId>
+			<version>1.12.92</version> <!-- o la versión más reciente -->
+		</dependency>
+
+		<dependency>
+			<groupId>software.amazon.awssdk</groupId>
+			<artifactId>ses</artifactId>
+			<version>2.20.16</version>
+		</dependency>
+		<dependency>
+			<groupId>software.amazon.awssdk</groupId>
+			<artifactId>sns</artifactId>
+			<version>2.20.16</version>
+		</dependency>
+	
+		<!-- Spring Data DynamoDB -->
+		<dependency>
+			<groupId>com.github.derjust</groupId>
+			<artifactId>spring-data-dynamodb</artifactId>
+			<version>5.1.0</version>
+		  </dependency>
+
+		  <dependency>
+			<groupId>software.amazon.awssdk</groupId>
+			<artifactId>dynamodb</artifactId>
+			<version>2.26.7</version> <!-- Reemplaza con la versión actual -->
+		</dependency>
+
+		<!-- AWS SDK for Java 
+		<dependency>
+    		<groupId>software.amazon.awssdk</groupId>
+    		<artifactId>sdk-bom</artifactId>
+    		<version>2.26.8</version>
+    		<type>pom</type>
+    		<scope>import</scope>
+		</dependency>
+		-->
+
+		<!-- AWS SES Client -->
+		<dependency>
+			<groupId>software.amazon.awssdk</groupId>
+    		<artifactId>ses</artifactId>
+    		<version>2.20.16</version>
+		</dependency>
+
+		<!-- AWS SNS Client -->
+		<dependency>
+    		<groupId>software.amazon.awssdk</groupId>
+    		<artifactId>sns</artifactId>
+    		<version>2.20.16</version>
+		</dependency>
+
+		<!-- Spring Cloud Starter AWS 
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+    		<artifactId>spring-cloud-starter-aws</artifactId>
+    		<version>3.0.3</version>
+		</dependency>
+		-->
+
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>		
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
